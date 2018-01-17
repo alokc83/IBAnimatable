@@ -8,7 +8,7 @@
 
 import Foundation
 
-public final class IB: NSObject, CornerDesignable, FillDesignable {
+public final class IB: NSObject, CornerDesignable, FillDesignable, BorderDesignable {
 
   private let view: UIView
 
@@ -48,6 +48,32 @@ public final class IB: NSObject, CornerDesignable, FillDesignable {
   public var opacity: CGFloat = CGFloat.nan {
     didSet {
       configureOpacity(in: view)
+    }
+  }
+
+  // MARK: - BorderDesignable
+
+  public var borderType: BorderType  = .solid {
+    didSet {
+      configureBorder(in: view)
+    }
+  }
+
+  public var borderColor: UIColor? {
+    didSet {
+      configureBorder(in: view)
+    }
+  }
+
+  public var borderWidth: CGFloat = CGFloat.nan {
+    didSet {
+      configureBorder(in: view)
+    }
+  }
+
+  public var borderSides: BorderSides  = .AllSides {
+    didSet {
+      configureBorder(in: view)
     }
   }
 

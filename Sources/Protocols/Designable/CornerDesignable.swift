@@ -67,15 +67,11 @@ extension CornerDesignable {
       return
     }
 
-    if cornerSides == .allSides {
-      view.layer.cornerRadius = cornerRadius
-    } else {
-      view.layer.cornerRadius = 0.0
-
-      // if a layer mask is specified, remove it
-      view.layer.mask?.removeFromSuperlayer()
-      view.layer.mask = cornerSidesLayer(inRect: view.bounds)
-    }
+    view.layer.cornerRadius = 0.0
+    
+    // if a layer mask is specified, remove it
+    view.layer.mask?.removeFromSuperlayer()
+    view.layer.mask = cornerSidesLayer(inRect: view.bounds)
   }
 
   private func cornerSidesLayer(inRect bounds: CGRect) -> CAShapeLayer {
